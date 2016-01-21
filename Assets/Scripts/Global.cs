@@ -1,25 +1,22 @@
 using UnityEngine;
 using System.Collections;
 
-public class intVector2
-{
-	public int x;
-	public int y;
-	
-	public intVector2(int newX, int newY)
-	{
-		x = newX;
-		y = newY;
-	}
-}
-
 public static class Global
 {
+	//Stuff for the tutorial
+	//Unlocks
+	public static bool[] elementUnlock = new bool[]
+	{//int{EARTH,AIR,WATER,FIRE};
+		true,true,true,true
+	};
+	public static int tutorialProgress = 0;
+
 	//Game running mode
 	public static bool win = false;
 	public static bool lose = false;
 	public static bool pause = false;
 	public static bool playingTheme = true;
+	public static float gameSpeed = 0.6f;
 
 	//Current level number
 	public static int levelNumber = 0;
@@ -28,15 +25,9 @@ public static class Global
 
 	//Number of each type of tile
 	public static int numOfTiles;
-	public static int numOfPlants;
+	public static int[] plantTypes = new int[10];
 	public static int[] tileTypes = new int[10];
 
+	//Center of the map
 	public static Vector3 center;
-
-	public static intVector2[] directions = new intVector2[]{
-		new intVector2(1,0),
-		new intVector2(0,1),
-		new intVector2(-1,0),
-		new intVector2(0,-1)
-	};
 }

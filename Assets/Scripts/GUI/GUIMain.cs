@@ -14,8 +14,7 @@ public class GUIMain : MonoBehaviour
 	
 	bool firstRun = true;
 	
-	int element;
-	int upgrade;
+	public string element;
 	
 	public LayerMask castMask = -257;
 	
@@ -37,13 +36,13 @@ public class GUIMain : MonoBehaviour
 				menu.StartWindowOpen = true;
 			}
 			//Score and level
-			List<WinCondition> win = new List<WinCondition>(tiles.winControl.currentConditions.Keys);
+			//List<WinCondition> win = new List<WinCondition>(tiles.winControl.currentConditions.Keys);
 			GUI.BeginGroup (new Rect(ButtonWidth * 2, ButtonWidth/3,Screen.width-(ButtonWidth * 4),ButtonWidth));
 			GUI.DrawTexture(new Rect(0,0,Screen.width-(ButtonWidth * 4),ButtonWidth),Resource.CenterConsole);
-			for(int i = 0; i < win.Count; i++)
+			/*for(int i = 0; i < win.Count; i++)
 			{
 				GUI.Label(new Rect(0,i*20,Screen.width-(ButtonWidth * 4),ButtonWidth),win[i].description);
-			}
+			}*/
 			GUI.EndGroup();
 
 			//Buttons
@@ -51,46 +50,46 @@ public class GUIMain : MonoBehaviour
 
 			if(Input.GetKeyDown(KeyCode.Q))
 			{
-				element = (int)TileType.element.FIRE;
+				//element = (int)TileType.element.FIRE;
 				Cursor.SetCursor (Resource.Fire_Cursor, Vector2.zero, CursorMode.Auto);
 				sounds.Play (Resource.Click, 1f);
 			}
 			if(Input.GetKeyDown(KeyCode.W))
 			{
-				element = (int)TileType.element.WATER;
+				//element = (int)TileType.element.WATER;
 				Cursor.SetCursor (Resource.Water_Cursor, Vector2.zero, CursorMode.Auto);
 				sounds.Play (Resource.Click, 1f);
 			}
 			if(Input.GetKeyDown(KeyCode.E))
 			{
-				element = (int)TileType.element.EARTH;
+				//element = (int)TileType.element.EARTH;
 				Cursor.SetCursor (Resource.Earth_Cursor, Vector2.zero, CursorMode.Auto);
 				sounds.Play (Resource.Click, 1f);
 			}
 			if(Input.GetKeyDown(KeyCode.R))
 			{
-				element = (int)TileType.element.AIR;
+				//element = (int)TileType.element.AIR;
 				Cursor.SetCursor (Resource.Air_Cursor, Vector2.zero, CursorMode.Auto);
 				sounds.Play (Resource.Click, 1f);
 			}
 
 			if (GUI.Button (new Rect (0, 0, ButtonWidth, ButtonHeight), Resource.Fire_Btn)) {
-				element = (int)TileType.element.FIRE;
+				//element = (int)TileType.element.FIRE;
 				Cursor.SetCursor (Resource.Fire_Cursor, Vector2.zero, CursorMode.Auto);
 				sounds.Play (Resource.Click, 1f);
 			}
 			if (GUI.Button (new Rect (0, ButtonHeight, ButtonWidth, ButtonHeight), Resource.Water_Btn)) {
-				element = (int)TileType.element.WATER;
+				//element = (int)TileType.element.WATER;
 				Cursor.SetCursor (Resource.Water_Cursor, Vector2.zero, CursorMode.Auto);
 				sounds.Play (Resource.Click, 1f);
 			}
 			if (GUI.Button (new Rect (0, ButtonHeight * 2, ButtonWidth, ButtonHeight), Resource.Earth_Btn)) {
-				element = (int)TileType.element.EARTH;
+				//element = (int)TileType.element.EARTH;
 				Cursor.SetCursor (Resource.Earth_Cursor, Vector2.zero, CursorMode.Auto);
 				sounds.Play (Resource.Click, 1f);
 			}
 			if (GUI.Button (new Rect (0, ButtonHeight * 3, ButtonWidth, ButtonHeight), Resource.Air_Btn)) {
-				element = (int)TileType.element.AIR;
+				//element = (int)TileType.element.AIR;
 				Cursor.SetCursor (Resource.Air_Cursor, Vector2.zero, CursorMode.Auto);
 				sounds.Play (Resource.Click, 1f);
 			}
@@ -101,22 +100,22 @@ public class GUIMain : MonoBehaviour
 			GUI.DrawTexture(new Rect(0,0,ButtonWidth*3,ButtonHeight),Resource.CenterConsole);
 			if (GUI.Button (new Rect (0, 0, ButtonWidth, ButtonHeight), "PLANT"))
 			{
-				element = -1;//(int)TileType.element.WATER;
-				upgrade = (int)TileType.enhancement.PLANT;
+				//element = -1;//(int)TileType.element.WATER;
+				//upgrade = (int)TileType.enhancement.PLANT;
 				Cursor.SetCursor(Resource.Menu_Cursor,new Vector2 (0.5f,0),CursorMode.Auto);
 				sounds.Play (Resource.Click, 1f);
 			}
 			if (GUI.Button (new Rect (ButtonWidth, 0, ButtonWidth, ButtonHeight), "ANIMAL")) 
 			{
-				element = -1;//(int)TileType.element.EARTH;
-				upgrade = (int)TileType.enhancement.ANIMAL;
+				//element = -1;//(int)TileType.element.EARTH;
+				//upgrade = (int)TileType.enhancement.ANIMAL;
 				Cursor.SetCursor(Resource.Menu_Cursor,new Vector2 (0.5f,0),CursorMode.Auto);
 				sounds.Play (Resource.Click, 1f);
 			}
 			if (GUI.Button (new Rect (ButtonWidth*2, 0, ButtonWidth, ButtonHeight), "MINERAL")) 
 			{
-				element = -1;//(int)TileType.element.AIR;
-				upgrade = (int)TileType.enhancement.MINERAL;
+				//element = -1;//(int)TileType.element.AIR;
+				//upgrade = (int)TileType.enhancement.MINERAL;
 				Cursor.SetCursor(Resource.Menu_Cursor,new Vector2 (0.5f,0),CursorMode.Auto);
 				sounds.Play (Resource.Click, 1f);
 			}
@@ -134,8 +133,7 @@ public class GUIMain : MonoBehaviour
 			{
 				if (Input.GetMouseButtonDown (0)) 
 				{
-					if(element != -1)tiles.ChangeType (click.transform.gameObject, element);
-					else if(upgrade != -1)tiles.EnhanceTile(click.transform.gameObject, upgrade);
+					tiles.ChangeTile(element,tiles.tileFromObject[click.transform.gameObject]);
 				}
 				tiles.OnHover (click.transform.gameObject);
 			}

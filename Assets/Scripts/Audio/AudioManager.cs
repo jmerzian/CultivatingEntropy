@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour
 	{
 		player = gameObject.AddComponent<AudioSource> ();
 
-		Global.playingTheme = true;
+		//Global.playingTheme = true;
 		ambiance = gameObject.AddComponent<AudioSource> ();
 		ambiance.clip = Resource.ambience;
 		ambiance.loop = true;

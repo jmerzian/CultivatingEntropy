@@ -1,108 +1,17 @@
 using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public static class Resource
 {
-	/********************************************************************************
-	 * MESHES
-	 * ******************************************************************************/
-	//public static Mesh plantMesh = (Mesh)Resources.Load(("Tiles/Plant"), typeof( Mesh ));
-	public static Mesh villageMesh = (Mesh)Resources.Load(("Tiles/Base"), typeof( Mesh ));
-
-	//Disaster meshes
-	public static Mesh fireMesh = (Mesh)Resources.Load(("Tiles/Fire"), typeof( Mesh ));
-	public static Mesh stormMesh = (Mesh)Resources.Load(("Tiles/stormClouds"), typeof( Mesh ));
-	//{STORM,VOLCANO,FLOOD,EARTHQUAKE};
-	public static Mesh[] disasterMesh = new Mesh[]
-	{
-		(Mesh)Resources.Load(("Tiles/Hurricane"), typeof( Mesh )),
-		(Mesh)Resources.Load(("Tiles/Volcano"), typeof( Mesh )),
-		(Mesh)Resources.Load(("Tiles/Flood"), typeof( Mesh )),
-		(Mesh)Resources.Load(("Tiles/Earthquake"), typeof( Mesh )),
-	};
+	/********************************************************
+	 * List of objects being used in the game
+	 * *****************************************************/
+	public static Dictionary<string,Tile> tileTemplate = new Dictionary<string, Tile> ();
+	public static Dictionary<string,Reaction> reactionTemplate = new Dictionary<string, Reaction> ();
+	public static Dictionary<string,Disaster> disasterTemplate = new Dictionary<string, Disaster> ();
 
 	public static Mesh baseMesh = (Mesh)Resources.Load(("Tiles/Base"), typeof( Mesh ));
-
-	public static Mesh[] tileMesh = new Mesh[]
-	{
-		(Mesh)Resources.Load(("Tiles/Desert"), typeof( Mesh )),
-		(Mesh)Resources.Load(("Tiles/Marsh"), typeof( Mesh )),
-		(Mesh)Resources.Load(("Tiles/Forest"), typeof( Mesh )),
-		(Mesh)Resources.Load(("Tiles/Water"), typeof( Mesh )),
-		(Mesh)Resources.Load(("Tiles/Mountain"), typeof( Mesh )),
-		(Mesh)Resources.Load(("Tiles/Grass"), typeof( Mesh )),
-		(Mesh)Resources.Load(("Tiles/Crags"), typeof( Mesh )),
-		(Mesh)Resources.Load(("Tiles/Base"), typeof( Mesh ))
-	};
-	public static Mesh[] plantMeshes = new Mesh[]{
-		(Mesh)Resources.Load (("Plants/Cactus"), typeof(Mesh))
-	};
-	public static Mesh[] animalMeshes = new Mesh[]{
-		(Mesh)Resources.Load (("Tiles/Base"), typeof(Mesh))
-	};
-
-	public static Mesh[] mineralMeshes = new Mesh[]{
-		(Mesh)Resources.Load (("Tiles/Base"), typeof(Mesh))
-	};
-
-
-	/*************************************************************************************
-	 * MATERIALS FOR MESHES
-	 * ************************************************************************************/
-	//public static Material plantMaterial = (Material)Resources.Load (("Tiles/Materials/Plant"), typeof(Material));
-	public static Material fireMaterial = (Material)Resources.Load (("Tiles/Materials/Fire"), typeof(Material));
-	public static Material stormMaterial = (Material)Resources.Load (("Tiles/Materials/Storm"), typeof(Material));
-	public static Material[] disasterMaterial = new Material[]
-	{
-		(Material)Resources.Load (("Tiles/Materials/Thunder"), typeof(Material)),
-		(Material)Resources.Load (("Tiles/Materials/Volcano"), typeof(Material)),
-		(Material)Resources.Load (("Tiles/Materials/Flood"), typeof(Material)),
-		(Material)Resources.Load (("Tiles/Materials/Quake"), typeof(Material)),
-	};
-
-	public static Material[] tileMaterial = new Material[]{
-		(Material)Resources.Load (("Tiles/Materials/Desert"), typeof(Material)),
-		(Material)Resources.Load (("Tiles/Materials/Marsh"), typeof(Material)),
-		(Material)Resources.Load (("Tiles/Materials/Forest"), typeof(Material)),
-		(Material)Resources.Load (("Tiles/Materials/Water"), typeof(Material)),
-		(Material)Resources.Load (("Tiles/Materials/Mountain"), typeof(Material)),
-		(Material)Resources.Load (("Tiles/Materials/Plain"), typeof(Material)),
-		(Material)Resources.Load (("Tiles/Materials/Crags"), typeof(Material)),
-		(Material)Resources.Load (("Tiles/Materials/Goal"), typeof(Material))
-	};
-
-	public static Material[] plantMaterials = new Material[]{
-		(Material)Resources.Load (("Plants/Materials/Cactus"), typeof(Material))
-	};
-	public static Material[] animalMaterials = new Material[]{
-		(Material)Resources.Load (("Plants/Materials/Cactus"), typeof(Material))
-	};
-	public static Material[] mineralMaterials = new Material[]{
-		(Material)Resources.Load (("Plants/Materials/Cactus"), typeof(Material))
-	};
-	/******************************************************************
-	 * PARTICLE EFFECTS
-	 * ****************************************************************/
-	public static GameObject fireParticle = ((GameObject)Resources.Load (("Particles/Fire"), typeof(GameObject)));
-	
-	public static Vector3[] disasterParticleOffset = new Vector3[]
-	{
-		new Vector3(0f,0f,0f),
-		new Vector3(0.023f,0.35f,0.037f),
-		new Vector3(0f,0f,0f),
-		new Vector3(0f,0.04f,0.01f),
-	};
-	public static GameObject[] disasterParticles = new GameObject[]
-	{
-		(GameObject)Resources.Load (("Particles/Cloud"), typeof(GameObject)),
-		(GameObject)Resources.Load (("Particles/VolcanoSmoke"), typeof(GameObject)),
-		(GameObject)Resources.Load (("Particles/VolcanoSmoke"), typeof(GameObject)),
-		(GameObject)Resources.Load (("Particles/EarthquakeDust"), typeof(GameObject)),
-	};
-
-	/******************************************************************
-	 * UV MAPS
-	 * ******************************************************************/
+	public static Material baseMaterial = (Material)Resources.Load (("Tiles/Materials/Default"), typeof(Material));
 
 	/**********************************************************
 	 * SOUND OBJECTS
@@ -111,11 +20,11 @@ public static class Resource
 	public static AudioClip mainTheme = (AudioClip)Resources.Load ("Sound/Music/Main_Theme/Main", typeof(AudioClip));
 	public static AudioClip loseTheme = (AudioClip)Resources.Load ("Sound/Music/GameOver_Theme/GameOverRev2", typeof(AudioClip));
 	public static AudioClip winTheme = (AudioClip)Resources.Load ("Sound/Music/Winning_Theme/WinMusic", typeof(AudioClip));
-
+	
 	public static AudioClip Click = (AudioClip)Resources.Load ("Sound/FX/gameplay/Click", typeof(AudioClip));
 	public static AudioClip startButton = (AudioClip)Resources.Load ("Sound/FX/gameplay/StartButton", typeof(AudioClip));
 	public static AudioClip wannaQuit = (AudioClip)Resources.Load ("Sound/FX/gameplay/WannaQuit", typeof(AudioClip));
-
+	
 	public static AudioClip[] elementSound = new AudioClip[]
 	{
 		(AudioClip)Resources.Load ("Sound/FX/Elements/earth", typeof(AudioClip)),
@@ -123,7 +32,7 @@ public static class Resource
 		(AudioClip)Resources.Load ("Sound/FX/Elements/water", typeof(AudioClip)),
 		(AudioClip)Resources.Load ("Sound/FX/Elements/fire", typeof(AudioClip)),
 	};
-
+	
 	/****************************************************************************
 	 * GUI OBJECTS
 	 * **************************************************************************/
@@ -157,5 +66,4 @@ public static class Resource
 	public static Texture2D Lose = (Texture2D)Resources.Load (("Gui/GameOver2"), typeof(Texture2D));
 	public static Texture2D Win = (Texture2D)Resources.Load (("Gui/GameWin"), typeof(Texture2D));
 	public static Texture2D Exit = (Texture2D)Resources.Load (("Gui/AreYouSure"), typeof(Texture2D));
-
 }

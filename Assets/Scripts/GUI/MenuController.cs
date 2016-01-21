@@ -73,7 +73,7 @@ public class MenuController : MonoBehaviour
 		if(GUI.Button(new Rect(0,0,ButtonWidth,ButtonHeight),Resource.LowDifficulty_Btn))
 		{
 			//SettingsWindowOpen = true;
-			tiles.NewLevel (1);
+			//tiles.NewLevel (1);
 			chosenLevel = 1;
 			StartWindowOpen = false;
 			Global.pause = false;
@@ -82,7 +82,7 @@ public class MenuController : MonoBehaviour
 		//Medium difficulty
 		if(GUI.Button(new Rect(ButtonWidth,0,ButtonWidth,ButtonHeight),Resource.MediumDifficulty_Btn))
 		{
-			tiles.NewLevel (2);
+			//tiles.NewLevel (2);
 			chosenLevel = 2;
 			StartWindowOpen = false;
 			Global.pause = false;
@@ -91,7 +91,7 @@ public class MenuController : MonoBehaviour
 		//Hard difficulty
 		if(GUI.Button(new Rect(ButtonWidth*2,0,ButtonWidth,ButtonHeight),Resource.HardDifficulty_Btn))
 		{
-			tiles.NewLevel (3);
+			//tiles.NewLevel (3);
 			chosenLevel = 3;
 			StartWindowOpen = false;
 			Global.pause = false;
@@ -193,7 +193,7 @@ public class MenuController : MonoBehaviour
 
 		if(GUI.Button(new Rect(0,0,MenuWidth,ButtonHeight),Resource.NG_Btn))
 		{
-			tiles.NewLevel(chosenLevel);
+			//tiles.NewLevel(chosenLevel);
 			WinWindowOpen = false;
 			Global.pause = false;
 			Global.win = false;
